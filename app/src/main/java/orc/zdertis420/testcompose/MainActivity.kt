@@ -69,7 +69,7 @@ fun ShowImageOrInitials(imageRes: Int?, initials: String) {
     if (imageRes != null) {
         Image(
             painter = painterResource(id = imageRes),
-            contentDescription = "Круглое изображение",
+            contentDescription = null,
             modifier = Modifier
                 .size(100.dp)
                 .clip(CircleShape)
@@ -79,22 +79,16 @@ fun ShowImageOrInitials(imageRes: Int?, initials: String) {
     }
 }
 
-//@Preview
-//@Composable
-//fun ShowImageOrInitialsPreview() {
-//    ShowImageOrInitials(R.drawable.immortal, "ABOBA")
-//}
-
 @Composable
 fun InfoRow(phone: String, address: String, email: String?, modifier: Modifier) {
     Row(
         modifier = modifier
     ) {
         Column {
-            Text("${stringResource(R.string.phone)}: ")
-            Text("${stringResource(R.string.address)}: ")
+            Text(stringResource(R.string.phone))
+            Text(stringResource(R.string.address))
             if (email != null) {
-                Text("${stringResource(R.string.email)}: ")
+                Text(stringResource(R.string.email))
             }
         }
 
@@ -107,18 +101,6 @@ fun InfoRow(phone: String, address: String, email: String?, modifier: Modifier) 
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun InfoRowPreview() {
-//    InfoRow(
-//        "8-999-999-99-99",
-//        "г. Усть, ул. Пушкина, д. Колотушкина",
-//        "cock@nigge.rs",
-//        modifier = Modifier
-//            .padding(16.dp)
-//    )
-//}
 
 @Composable
 fun ContactDetails(contact: Contact) {
@@ -171,9 +153,26 @@ fun ContactDetailsPreview() {
             "Иванович",
             "Иванов",
             R.drawable.immortal,
-            true,
+            false,
             "8-228-420-42-69",
             "г. Усть, ул. Пушкина, д. Колотушкина",
+            null
+        )
+    )
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun ContactDetailsPreview2() {
+    ContactDetails(
+        Contact(
+            "Алексей",
+            "Алексеевич",
+            "Алексеев",
+            null,
+            true,
+            "+7 (666) 052 13 37",
+            "Ярославская обл. дер. Горе грязь",
             "cock@nigge.rs"
         )
     )
